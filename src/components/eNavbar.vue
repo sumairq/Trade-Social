@@ -1,6 +1,9 @@
 <template>
 	<header class="header">
-		<nav class="navbar">
+		<nav
+			class="navbar"
+			:class="$route.path === '/' ? '' : 'with-background'"
+		>
 			<div class="container">
 				<div class="navbar-brand">
 					<a
@@ -26,12 +29,12 @@
 				>
 					<div class="navbar-end">
 						<!-- Loop through the navigation items -->
-						<a
+						<router-link
 							v-for="item in items"
 							v-bind:key="item.text"
-							v-bind:href="item.link"
+							v-bind:to="item.link"
 							class="navbar-item nav-web"
-							>{{ item.text }}</a
+							>{{ item.text }}</router-link
 						>
 					</div>
 				</div>

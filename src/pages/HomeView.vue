@@ -1,12 +1,6 @@
 <template>
 	<div>
-		<exchange-navbar
-			v-bind:title="brandName"
-			v-bind:items="menuItems"
-		/>
-
 		<exchange-hero />
-
 		<exchange-list :exchanges="exchanges" />
 
 		<exchange-pagination />
@@ -14,27 +8,17 @@
 </template>
 
 <script>
-import ExchangeNavbar from "@/components/eNavbar.vue";
-import ExchangeHero from "@/components/eHero.vue";
 import ExchangeList from "@/components/ExchangeList.vue";
 import ExchangePagination from "@/components/ePagination.vue";
+import ExchangeHero from "@/components/eHero.vue";
 export default {
 	components: {
-		ExchangeNavbar,
-		ExchangeHero,
 		ExchangeList,
 		ExchangePagination,
+		ExchangeHero,
 	},
 	data() {
 		return {
-			brandName: "Trade Social",
-			menuItems: [
-				{ text: "Home", link: "/" },
-				{ text: "About", link: "/about" },
-				{ text: "Faq", link: "/faq" },
-				{ text: "Login", link: "/login" },
-				{ text: "Register", link: "/register" },
-			],
 			exchanges: [
 				{
 					id: "ad7a1231238dasd",
