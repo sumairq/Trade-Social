@@ -14,10 +14,12 @@
     "bulma": "^0.9.3",
     "core-js": "^3.8.3",
     "css-loader": "^5.2.7",
+    "firebase": "^9.6.1",
     "sass": "^1.57.1",
     "sass-loader": "^10.4.1",
     "vue": "^3.2.13",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
