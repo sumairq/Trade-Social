@@ -52,11 +52,13 @@
 						</div>
 						<button
 							@click="register"
+							:disabled="isProcessing"
 							type="button"
 							class="button is-block is-info is-large is-fullwidth"
 						>
-							Sign Up
+						Sign Up
 						</button>
+						{{ error ? error :"no error" }}
 					</form>
 				</div>
 				<p class="has-text-grey">
@@ -69,6 +71,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
 	data() {
 		return {
@@ -80,6 +83,10 @@ export default {
 			},
 		};
 	},
+	computed: mapState("user",{
+		error: (register) => register.error,
+		isProcessing: (register) => register.isProcessing
+	}),
 	methods: {
 		register() {
 			this.$store.dispatch("user/register", this.form);

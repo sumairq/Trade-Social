@@ -2,8 +2,18 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default {
 	namespaced: true,
+	state(){
+		return {
+			register: {
+				isProcessing: false,
+				error: ""
+			}
+		}
+	},
 	actions: {
-		async register(_, { email, password }) {
+		async register({commit}, { email, password }) {
+			commit("setRegisterIsProcessing", true);
+			commit("setRegisterError", "")
 			const auth = getAuth();
 
 			try {
@@ -14,14 +24,23 @@ export default {
 				);
 				alert("Success! User has been registered");
 
-				debugger;
-
 				return userCredentials.user;
 			} catch (e) {
-				console.error(e.message);
+				commit("setRegisterError", e.message)
+			} finally {
+               commit("setRegisterIsProcessing", false);
 			}
 
 			// Firebase functionality to register user
 		},
 	},
+
+	mutations: {
+		setRegisterIsProcessing(state, isProcessing){
+           state.register.isProcessing = isProcessing
+		},
+		setRegisterError(state, error){
+			state.register.error = error;
+		}
+	}
 };
